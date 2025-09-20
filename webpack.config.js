@@ -9,6 +9,7 @@ const path = _require("path")
 const HtmlPlugin = _require("html-webpack-plugin")
 const CopyPlugin = _require("copy-webpack-plugin")
 const { VueLoaderPlugin } = _require("vue-loader")
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   resolve: {
@@ -29,7 +30,6 @@ module.exports = {
     // 주석은 기본값!, `__dirname`은 현재 파일의 위치를 알려주는 NodeJS 전역 변수
     // path: path.resolve(__dirname, 'dist'),
     // filename: 'main.js',
-    clean: true,
   },
 
   // 모듈 처리 방식을 설정
@@ -49,8 +49,8 @@ module.exports = {
           {
             loader: "sass-loader",
             options: {
-              additionalData: '@import "~/scss/main";'
-            }
+              additionalData: '@import "~/scss/main";',
+            },
           },
         ],
       },
@@ -75,12 +75,13 @@ module.exports = {
       patterns: [{ from: "static" }],
     }),
     new VueLoaderPlugin(),
+    new Dotenv(),
   ],
 
   // 개발 서버 옵션
   devServer: {
     host: "localhost",
-    port: 8080,
+    port: 8079,
     hot: true,
   },
 }
