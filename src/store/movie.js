@@ -91,8 +91,8 @@ export default {
           loading: false,
         })
       }
-    },
-  },
+    }
+  }
 }
 
 async function _fetchMovie(payload) {
